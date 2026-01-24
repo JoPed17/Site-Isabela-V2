@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coloração Pessoal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <!-- Estilos principais -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <!-- ==========================
+       DECORAÇÃO DE FUNDO
+       ========================== -->
+  <div id="app" class="w-full h-full gradient-bg overflow-auto relative">
+   <!-- Círculos desfocados decorativos -->
+   <div class="absolute top-40 left-20 w-96 h-96 bg-purple-600 rounded-full blur-circle"></div>
+   <div class="absolute top-1/3 right-10 w-80 h-80 bg-pink-500 rounded-full blur-circle"></div>
+   <div class="absolute bottom-40 left-1/4 w-72 h-72 bg-rose-500 rounded-full blur-circle"></div>
+     <div class="absolute top-2/3 right-1/4 w-64 h-64 bg-fuchsia-600 rounded-full blur-circle"></div>
+
+     <!-- ==========================
+       MENU LATERAL
+       ========================== -->
+     <!-- Botão do menu -->
+     <button id="menuBtn" class="fixed top-6 left-6 z-50 glass rounded-2xl p-4 cursor-pointer hover:bg-white/20 transition-all duration-300">
+    <div class="flex flex-col gap-1.5"><span id="menuLine1" class="w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span> <span id="menuLine2" class="w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span> <span id="menuLine3" class="w-4 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+    </div></button>
+
+     <!-- Overlay do menu -->
+     <div id="menuOverlay" class="menu-overlay fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"></div>
+
+     <!-- Painel do menu -->
+   <nav id="menuPanel" class="menu-panel fixed top-6 left-6 bottom-6 w-80 z-50 glass-dark rounded-3xl p-8 flex flex-col">
+    <div class="flex items-center justify-between mb-12"><span class="text-white text-xl font-semibold">Menu</span> <button id="closeMenuBtn" class="text-white/60 hover:text-white transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg></button>
+    </div>
+    <div class="flex flex-col gap-2 flex-1"><a href="#home" class="menu-item text-white/90 text-lg py-4 px-5 rounded-2xl flex items-center gap-4">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg> Início </a> <a href="#services" class="menu-item text-white/90 text-lg py-4 px-5 rounded-2xl flex items-center gap-4">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+      </svg> Serviços </a> <a href="#about" class="menu-item text-white/90 text-lg py-4 px-5 rounded-2xl flex items-center gap-4">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg> Sobre </a> <a href="#testimonials" class="menu-item text-white/90 text-lg py-4 px-5 rounded-2xl flex items-center gap-4">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg> Depoimentos </a> <a href="#contact" class="menu-item text-white/90 text-lg py-4 px-5 rounded-2xl flex items-center gap-4">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg> Contato </a>
+    </div>
+        <div class="glass rounded-2xl p-5 mt-auto">
+     <p class="text-white/60 text-sm mb-3">Pronta para descobrir suas cores?</p><button class="cta-btn w-full py-3 rounded-xl text-white font-medium text-sm"> Estou pronta </button>
+    </div>
+       </nav>
+
+       <!-- ==========================
+         SEÇÃO HERO (INÍCIO)
+         ========================== -->
+       <section id="home" class="min-h-full flex items-center justify-center px-4 sm:px-6 py-16 sm:py-20 relative">
+    <div class="max-w-7xl w-full mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"><!-- Hero Text -->
+     <div class="text-center lg:text-left z-10"><span class="inline-block glass rounded-full px-4 py-1.5 sm:px-5 sm:py-2 text-white/80 text-xs sm:text-sm mb-4 sm:mb-6 tracking-wider"> ✨ Consultoria de Imagem Personalizada </span>
+      <h1 id="heroTitle" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 sm:mb-6">IMAGEM ALINHADA, <span class="text-gradient">COMEÇA PELAS CORES CERTAS</span></h1>
+      <p id="heroSubtitle" class="text-base sm:text-lg md:text-xl text-white/70 mb-8 sm:mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">Descubra as cores que mais valorizam você com uma análise de coloração pessoal digital completa e personalizada.</p>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"><button id="ctaBtn" class="cta-btn px-8 sm:px-10 py-4 sm:py-5 rounded-2xl text-white font-semibold text-base sm:text-lg"> Quero minha Análise </button> <button class="glass px-6 sm:px-8 py-4 sm:py-5 rounded-2xl text-white font-medium hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z" />
+        </svg> Ver Como Funciona </button>
+      </div>
+      <!-- Estatísticas -->
+      <div class="flex gap-4 sm:gap-6 md:gap-8 mt-8 sm:mt-12 justify-center lg:justify-start">
+       <div>
+        <p class="text-2xl sm:text-3xl font-bold text-white">500+</p>
+        <p class="text-white/50 text-xs sm:text-sm">Clientes Felizes</p>
+       </div>
+       <div class="w-px bg-white/20"></div>
+       <div>
+        <p class="text-2xl sm:text-3xl font-bold text-white">4.9</p>
+        <p class="text-white/50 text-xs sm:text-sm">Avaliação Média</p>
+       </div>
+       <div class="w-px bg-white/20"></div>
+       <div>
+        <p class="text-2xl sm:text-3xl font-bold text-white">8+</p>
+        <p class="text-white/50 text-xs sm:text-sm">Anos de Experiência</p>
+       </div>
+      </div>
+    </div>
+    <!-- Imagem/ilustração principal -->
+      <div class="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
+      <div class="float-animation relative w-full max-w-sm lg:max-w-md">
+       <div class="glass-card rounded-2xl sm:rounded-3xl p-3 sm:p-4 relative">
+        <div class="overflow-hidden rounded-2xl sm:rounded-3xl">
+        <img src="Imagem perfil.png" alt="Foto de Isabela Batista" class="w-full h-full object-cover">
+        </div>
+        <!-- Floating badge -->
+        <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 glass rounded-xl sm:rounded-2xl px-3 py-2 sm:px-5 sm:py-3 flex items-center gap-2 sm:gap-3">
+         <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-green-500 flex items-center justify-center">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <p class="text-white font-semibold text-xs sm:text-sm">Análise Completa</p>
+          <p class="text-white/60 text-xs">Paleta personalizada</p>
+         </div>
+        </div>
+        <!-- Selo superior -->
+        <div class="absolute -top-2 right-4 sm:-top-3 sm:right-8 glass rounded-full px-3 py-1.5 sm:px-4 sm:py-2 flex items-center gap-1.5 sm:gap-2"><span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-white text-xs sm:text-sm font-medium">Coloração pessoal</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- Indicador de rolagem -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+     <div class="glass rounded-full p-3">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+     </div>
+    </div>
+     </section>
+
+     <!-- ==========================
+       SEÇÃO SOBRE COLORIMETRIA
+       ========================== -->
+     <section id="about" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center"><!-- Text Content -->
+      <div><span class="glass inline-block rounded-full px-4 py-1.5 sm:px-5 sm:py-2 text-white/80 text-xs sm:text-sm mb-4 sm:mb-6"> Por que funciona? </span>
+       <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8">Sobre a Colorimetria</h2>
+       <div class="space-y-4 sm:space-y-6 text-white/80 leading-relaxed text-sm sm:text-base">
+        <p class="sm:text-lg">Quando você usa as cores certas para a sua pele, o rosto ilumina, as olheiras suavizam, a aparência fica mais descansada e confiante. Você parece bem sem precisar se esforçar — e isso muda a forma como as pessoas te enxergam.</p>
+        <div class="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6">
+         <h3 class="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">O resultado?</h3>
+         <p>Menos dúvidas na hora de comprar, menos peças paradas no armário e uma imagem muito mais coerente com quem você é.</p>
+        </div>
+        <div class="space-y-3 sm:space-y-4">
+         <p class="text-base sm:text-lg font-medium text-white">Coloração pessoal é investimento em clareza:</p>
+         <p>Você sabe o que escolher, o que evitar e como repetir acertos todos os dias.</p>
+        </div>
+        <div class="border-l-4 border-pink-500 pl-4 sm:pl-6 py-2">
+         <p class="text-lg sm:text-xl font-semibold text-white mb-2">Não é só cor.</p>
+         <p class="text-lg sm:text-xl font-semibold text-white">É estratégia de imagem.</p>
+        </div>
+       </div>
+      </div>
+      <!-- Imagem explicativa de colorimetria -->
+      <div class="relative mt-8 lg:mt-0">
+       <div class="glass-card rounded-2xl sm:rounded-3xl p-0 overflow-hidden">
+        <img src="Isabela.jpg" alt="Arte explicativa sobre colorimetria" class="w-full h-full object-cover">
+       </div>
+      </div>
+     </div>
+    </div>
+     </section>
+
+     <!-- ==========================
+       SEÇÃO DE SERVIÇOS
+       ========================== -->
+    <section id="services" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-12 sm:mb-16"><span class="glass inline-block rounded-full px-4 py-1.5 sm:px-5 sm:py-2 text-white/80 text-xs sm:text-sm mb-3 sm:mb-4"> O que oferecemos </span>
+      <h2 id="servicesTitle" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4 px-4">O que você recebe na Análise de Coloração Pessoal Digital</h2>
+      <p class="text-white/60 text-sm sm:text-base max-w-2xl mx-auto px-4">Descubra como podemos ajudar você a encontrar as cores que mais valorizam sua beleza única.</p>
+     </div>
+    <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+     <!-- Card de serviço 1 -->
+      <div class="service-card glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+       <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center mb-5 sm:mb-6">
+        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+        </svg>
+       </div>
+       <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">Análise Digital</h3>
+       <div class="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8 text-sm sm:text-base">
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Cartela de cores personalizada</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Melhores cores para cabelo (tons que iluminam e harmonizam)</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Metais ideais (prata, dourado, rosé e variações)</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Indicação de estampas e contrastes que mais valorizam</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Guia prático de combinações para o dia a dia</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Dossiê digital exclusivo, feito sob medida para você</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Orientações simples e aplicáveis para roupas, maquiagem e acessórios</p>
+        </div>
+       </div>
+      <p class="text-2xl sm:text-3xl font-bold text-white mb-2">R$ 497</p><button class="cta-btn w-full py-3.5 sm:py-4 rounded-xl text-white font-semibold text-sm sm:text-base">Quero este pacote</button>
+          </div>
+          <!-- Card de serviço 2 (mais completo) -->
+      <div class="service-card glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 border-2 border-pink-500/30">
+       <div class="flex items-center justify-between mb-5 sm:mb-6">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-600 flex items-center justify-center">
+         <svg class="w-7 h-7 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+         </svg>
+        </div><span class="glass px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm text-white/90 font-medium">Mais Completo</span>
+       </div>
+       <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">Análise Digital + Consultoria</h3>
+       <div class="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8 text-sm sm:text-base">
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-purple-400 text-base sm:text-lg mt-0.5">📞</span>
+         <p class="text-white/90 font-medium">Call explicativa para entender seu dossiê e aprender a aplicar suas cores no dia a dia</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Cartela de cores personalizada</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Melhores cores para cabelo (tons que iluminam e harmonizam)</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Metais ideais (prata, dourado, rosé e variações)</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Indicação de estampas e contrastes que mais valorizam</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Guia prático de combinações para o dia a dia</p>
+        </div>
+        <div class="flex items-start gap-2 sm:gap-3"><span class="text-green-400 text-base sm:text-lg mt-0.5">✔️</span>
+         <p class="text-white/80">Dossiê digital exclusivo, feito sob medida para você</p>
+        </div>
+       </div>
+         <p class="text-2xl sm:text-3xl font-bold text-white mb-2">R$ 697</p><button class="cta-btn w-full py-3.5 sm:py-4 rounded-xl text-white font-semibold text-sm sm:text-base">Quero este pacote</button>
+        </div>
+       </div>
+      </div>
+       </section>
+
+       <!-- ==========================
+         SEÇÃO VÍDEOS (INSTAGRAM)
+         ========================== -->
+       <section id="videos" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative">
+      <div class="max-w-6xl mx-auto">
+       <div class="text-center mb-10 sm:mb-14">
+        <span class="glass inline-block rounded-full px-4 py-1.5 sm:px-5 sm:py-2 text-white/80 text-xs sm:text-sm mb-3 sm:mb-4"> Casos reais de coloração </span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">Veja a coloração na prática</h2>
+        <p class="text-white/60 text-sm sm:text-base max-w-2xl mx-auto px-4">Assista a transformações reais de clientes e veja como a coloração pessoal muda a forma de se enxergar e de se vestir.</p>
+       </div>
+
+      <div class="grid gap-6 sm:gap-8 md:grid-cols-3">
+       <!-- Card de vídeo 1 -->
+       <article class="glass-card rounded-3xl p-3 sm:p-4 flex flex-col gap-3">
+        <div class="relative rounded-3xl overflow-hidden bg-black/40 aspect-[9/16] border border-white/10">
+         <!-- Vídeo 1 - Instagram -->
+         <iframe
+          src="https://www.instagram.com/p/DJceR2OS5u-/embed"
+          class="w-full h-full"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade">
+         </iframe>
+        </div>
+        <div class="flex items-center justify-between mt-2">
+         <span class="text-white/80 text-xs sm:text-sm">Sua cartela ideal não te limita, ELA TE LIBERTA!</span>
+         <span class="glass rounded-full px-2.5 py-0.5 text-[10px] sm:text-xs text-white/80">Reels</span>
+        </div>
+       </article>
+
+       <!-- Card de vídeo 2 -->
+       <article class="glass-card rounded-3xl p-3 sm:p-4 flex flex-col gap-3">
+        <div class="relative rounded-3xl overflow-hidden bg-black/40 aspect-[9/16] border border-white/10">
+         <!-- Vídeo 2 - Instagram -->
+         <iframe
+          src="https://www.instagram.com/p/DQekuLkjpkT/embed"
+          class="w-full h-full"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade">
+         </iframe>
+        </div>
+        <div class="flex items-center justify-between mt-2">
+         <span class="text-white/80 text-xs sm:text-sm">Fazendo a minha coloração pessoal</span>
+         <span class="glass rounded-full px-2.5 py-0.5 text-[10px] sm:text-xs text-white/80">Reels</span>
+        </div>
+       </article>
+
+       <!-- Card de vídeo 3 -->
+       <article class="glass-card rounded-3xl p-3 sm:p-4 flex flex-col gap-3">
+        <div class="relative rounded-3xl overflow-hidden bg-black/40 aspect-[9/16] border border-white/10">
+         <!-- Vídeo 3 - Instagram -->
+         <iframe
+          src="https://www.instagram.com/p/DQfSLoUkh8J/embed"
+          class="w-full h-full"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade">
+         </iframe>
+        </div>
+        <div class="flex items-center justify-between mt-2">
+         <span class="text-white/80 text-xs sm:text-sm">Quando a gente se perde, às vezes é só o começo do reencontro</span>
+         <span class="glass rounded-full px-2.5 py-0.5 text-[10px] sm:text-xs text-white/80">Reels</span>
+        </div>
+       </article>
+      </div>
+          </div>
+      </section>
+
+       <!-- Who Am I Section -->
+       <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative">
+   <section class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-8 sm:mb-12"><span class="glass inline-block rounded-full px-4 py-1.5 sm:px-5 sm:py-2 text-white/80 text-xs sm:text-sm mb-3 sm:mb-4"> Conheça </span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">Quem sou eu</h2>
+     </div>
+    <div class="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center max-w-5xl mx-auto"><!-- Foto de perfil -->
+     <div class="relative order-2 lg:order-1">
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-2 sm:p-3 aspect-square overflow-hidden flex items-center justify-center">
+       <img src="Imagem perfil.png" alt="Foto de Isabela Batista" class="w-full h-full object-cover rounded-2xl sm:rounded-3xl">
+      </div>
+     </div><!-- Bio Content -->
+      <div class="order-1 lg:order-2">
+       <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3">Isabela Batista</h3>
+       <p class="text-pink-400 text-base sm:text-lg mb-5 sm:mb-6">Consultora de Imagem</p>
+       <div class="space-y-3 sm:space-y-4 text-white/80 leading-relaxed text-sm sm:text-base mb-6 sm:mb-8">
+        <p>Consultora de imagem especializada em coloração pessoal e estratégia visual. Ajudo mulheres a comunicarem quem são por meio das cores certas, roupas alinhadas ao estilo de vida e escolhas inteligentes que trazem segurança e praticidade.</p>
+        <p>Acredito que imagem não é máscara: é construção. Com método, olhar cuidadoso e sensibilidade, traduzo sua essência em uma presença marcante — no espelho, no trabalho e na vida.</p>
+       </div><!-- Social Links -->
+       <div class="flex gap-3 sm:gap-4"><a href="#" class="glass w-11 h-11 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center hover:bg-white/20 transition-all duration-300">
+         <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+         </svg></a> <a href="#" class="glass w-11 h-11 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center hover:bg-white/20 transition-all duration-300">
+         <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+         </svg></a> <a href="#" class="glass w-11 h-11 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center hover:bg-white/20 transition-all duration-300">
+         <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+         </svg></a> <a href="#" class="glass w-11 h-11 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center hover:bg-white/20 transition-all duration-300">
+         <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+         </svg></a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Testimonials Section -->
+   <section id="testimonials" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-12 sm:mb-16"><span class="glass inline-block rounded-full px-4 py-1.5 sm:px-5 sm:py-2 text-white/80 text-xs sm:text-sm mb-3 sm:mb-4"> Depoimentos </span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">O que dizem sobre nós</h2>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+       <div class="flex gap-1 mb-3 sm:mb-4"><span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span>
+       </div>
+       <p class="text-white/80 mb-5 sm:mb-6 leading-relaxed text-sm sm:text-base">"Descobri que sou Primavera Quente e isso mudou completamente minha forma de me vestir. Agora recebo elogios todos os dias!"</p>
+       <div class="flex items-center gap-3 sm:gap-4">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center text-white font-semibold text-sm sm:text-base">
+         MA
+        </div>
+        <div>
+         <p class="text-white font-medium text-sm sm:text-base">Marina Alves</p>
+         <p class="text-white/50 text-xs sm:text-sm">São Paulo, SP</p>
+        </div>
+       </div>
+      </div>
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+       <div class="flex gap-1 mb-3 sm:mb-4"><span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span>
+       </div>
+       <p class="text-white/80 mb-5 sm:mb-6 leading-relaxed text-sm sm:text-base">"O atendimento foi incrível e muito personalizado. Agora tenho uma paleta de cores que realmente combina comigo!"</p>
+       <div class="flex items-center gap-3 sm:gap-4">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-purple-400 to-indigo-500 flex items-center justify-center text-white font-semibold text-sm sm:text-base">
+         JS
+        </div>
+        <div>
+         <p class="text-white font-medium text-sm sm:text-base">Julia Santos</p>
+         <p class="text-white/50 text-xs sm:text-sm">Rio de Janeiro, RJ</p>
+        </div>
+       </div>
+      </div>
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+       <div class="flex gap-1 mb-3 sm:mb-4"><span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span> <span class="text-yellow-400 text-sm sm:text-base">⭐</span>
+       </div>
+       <p class="text-white/80 mb-5 sm:mb-6 leading-relaxed text-sm sm:text-base">"Investimento que vale cada centavo! Economizei muito dinheiro parando de comprar roupas que não combinavam comigo."</p>
+       <div class="flex items-center gap-3 sm:gap-4">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-semibold text-sm sm:text-base">
+         CF
+        </div>
+        <div>
+         <p class="text-white font-medium text-sm sm:text-base">Carla Ferreira</p>
+         <p class="text-white/50 text-xs sm:text-sm">Belo Horizonte, MG</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+  <footer class="py-12 px-6 border-t border-white/10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="flex items-center gap-3">
+     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center"><span class="text-white text-lg font-semibold">IB</span>
+     </div><span class="text-white font-semibold text-lg">Isabela Batista</span>
+     </div>
+     <div class="flex gap-6"><a href="#" class="text-white/60 hover:text-white transition-colors">Instagram</a> <a href="#" class="text-white/60 hover:text-white transition-colors">WhatsApp</a> <a href="#" class="text-white/60 hover:text-white transition-colors">Email</a>
+     </div>
+     <p class="text-white/40 text-sm">© 2026 Todos os direitos reservados</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      hero_title: 'IMAGEM ALINHADA, COMEÇA PELAS CORES CERTAS',
+      hero_subtitle: 'Descubra as cores que mais valorizam você com uma análise de coloração pessoal digital completa e personalizada.',
+      cta_text: 'Quero minha Análise',
+      services_title: 'O que você recebe na Análise de Coloração Pessoal Digital',
+      primary_color: '#e94560',
+      secondary_color: '#0a0a0a',
+      text_color: '#ffffff',
+      font_family: 'Inter',
+      font_size: 16
+    };
+    
+    let config = { ...defaultConfig };
+    
+    // Menu functionality
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuPanel = document.getElementById('menuPanel');
+    const menuLine1 = document.getElementById('menuLine1');
+    const menuLine2 = document.getElementById('menuLine2');
+    const menuLine3 = document.getElementById('menuLine3');
+    
+    function openMenu() {
+      menuOverlay.classList.add('active');
+      menuPanel.classList.add('active');
+      menuBtn.style.opacity = '0';
+      menuBtn.style.pointerEvents = 'none';
+    }
+    
+    function closeMenu() {
+      menuOverlay.classList.remove('active');
+      menuPanel.classList.remove('active');
+      menuBtn.style.opacity = '1';
+      menuBtn.style.pointerEvents = 'auto';
+    }
+    
+    menuBtn.addEventListener('click', openMenu);
+    closeMenuBtn.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+    
+    // Close menu on link click
+    document.querySelectorAll('.menu-item').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+    
+    async function onConfigChange(cfg) {
+      const heroTitle = document.getElementById('heroTitle');
+      const heroSubtitle = document.getElementById('heroSubtitle');
+      const ctaBtn = document.getElementById('ctaBtn');
+      const servicesTitle = document.getElementById('servicesTitle');
+      
+      if (heroTitle) {
+        const titleText = cfg.hero_title || defaultConfig.hero_title;
+        heroTitle.innerHTML = titleText.includes('CORES CERTAS') 
+          ? titleText.replace('CORES CERTAS', '<span class="text-gradient">CORES CERTAS</span>')
+          : titleText;
+      }
+      
+      if (heroSubtitle) {
+        heroSubtitle.textContent = cfg.hero_subtitle || defaultConfig.hero_subtitle;
+      }
+      
+      if (ctaBtn) {
+        ctaBtn.textContent = cfg.cta_text || defaultConfig.cta_text;
+      }
+      
+      if (servicesTitle) {
+        servicesTitle.textContent = cfg.services_title || defaultConfig.services_title;
+      }
+      
+      // Apply font family
+      const fontFamily = cfg.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `${fontFamily}, -apple-system, BlinkMacSystemFont, sans-serif`;
+      
+      // Apply font size scaling
+      const baseSize = cfg.font_size || defaultConfig.font_size;
+      document.documentElement.style.fontSize = `${baseSize}px`;
+    }
+    
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              cfg.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => cfg.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              cfg.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              cfg.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => cfg.font_family || defaultConfig.font_family,
+          set: (value) => {
+            cfg.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => cfg.font_size || defaultConfig.font_size,
+          set: (value) => {
+            cfg.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+    
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['hero_title', cfg.hero_title || defaultConfig.hero_title],
+        ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle],
+        ['cta_text', cfg.cta_text || defaultConfig.cta_text],
+        ['services_title', cfg.services_title || defaultConfig.services_title]
+      ]);
+    }
+    
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c2fd8c770fb36f6',t:'MTc2OTI2MTAyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
